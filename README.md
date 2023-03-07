@@ -4,36 +4,48 @@
 
 ## **Purpose**
 
-    Use Deep Learning to create a binary classifier that can predict whether applicants will be successful if funded by Alphabet Soup.
+    Use Deep Learning to create a binary classifier that can predict whether applicants will be successful if they are funded by Alphabet Soup.
 
 ## **Background**
 
     The nonprofit foundation Alphabet Soup wants a tool that can help it select the applicants for funding with the best chance of success in their ventures. With your knowledge of machine learning and neural networks, you’ll use the features in the provided dataset to create a binary classifier that can predict whether applicants will be successful if funded by Alphabet Soup.  
 
-## **Process**
- 
-### ***Preprocess the data***
-    scikit-learn, Pandas
+## **Results** 
 
-### ***Compile, Train and Evaluate the Model***
-    Tensor Flow, Google colab
+* Data Preprocessing
 
-### ***Optimize the Model***
-    TensorFlow, optimize model to >75% accuracy
+The following variables were available in the starting data from the charity_data.csv file. Data processing available in AlphabetSoupCharity_Optimization.ipynb.
 
-### ***Write a report on the Neural Network Model***
-    TensorFlow, optimize model to >75% accuracy
+* The variable "IS_SUCCESSFUL" is the target for the model.
+* The variables "EIN" and "NAME" are non-beneficial columns and were removed from the model.  
+* All other variables are features to be used to build the model:
+    * APPLICATION_TYPE
+    * AFFILIATION            
+    * CLASSIFICATION           
+    * USE_CASE               
+    * ORGANIZATION             
+    * STATUS                 
+    * INCOME_AMT                
+    * SPECIAL_CONSIDERATIONS   
+    * ASK_AMT 
 
-## **Results**
+* Compiling, Training, and Evaluating the Model
 
-### ***Data Preprocessing***
-<img src= "img.png" alt = 'info about image' width = '60%'>
+I was not able to achieve the target model performance of accuracy >=0.75.
+I tried varying number of neurons, layers, activation functions and two different formats for bucketing the initial data.  
 
-### ***Compiling, Training, and Evaluating the Model***
-<img src = 'img.png' alt = 'info about image' width = '60%'>
+| Model Run | N Layers | Activation Functions | N Neurons | Comments | Accuracy | Loss |
+|-----------|----------|----------------------|-----------|----------|-----------|--------|
+| Initial (nn) | 2 | relu | 8,5 | starting point from homework | 0.7284 | 0.5523 |
+| 2nd run (nnA) | 3 | relu, tanh, relu | 20,20,10 | increase layers, sandwich activation functions, increase neurons | 0.7298 | 0.5562 |
+| 3rd run (nnaB) | 2 | relu | 20,20 | different bucketing of initial data | 0.7259 | 0.5500 |
+| 4th run (nnaC) | 5 | relu | all 100 | increase layers, increase neurons | 0.7324 | 0.5863 |
+| 5th run (nnaD) | 2 | relu | 100,50 | decrease layers | 0.7306 | 0.5635 |
+---
 
-## **Summary**
-summarize, recommend, explain recommendation
+## **Summary** 
+
+After five attempts at fitting the model, the maximum accuracy achieved was 0.7324 with a loss of 0.5863.  Further evaluation of the initial data may suggest a better binning method for the data that may increase model accuracy. Additional options include trying different optimizers or increasing the training set size. 
 
 ---
 
